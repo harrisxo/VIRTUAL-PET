@@ -49,6 +49,9 @@ const Home = ({ setIsLogin, setIsAuth, setCurrentUser }) => {
     if (!showRegisterForm) {
       setShowRegisterForm(true);
       return;
+    } else if (!registerFormData.email.includes('@')) {
+      setErrorMessage('Invalid email format');
+      return;
     }
     handleSubmit('register', registerFormData);
   };

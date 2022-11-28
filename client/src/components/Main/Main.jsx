@@ -4,8 +4,8 @@ import KiwiImg from '../../assets/imgs/kiwi1.jpg';
 import Egg from '../../assets/imgs/egg-gif.gif';
 import BabyKiwi from '../../assets/imgs/baby-kiwi.png';
 import YoungKiwi from '../../assets/imgs/young-kiwi.png';
-import AdultKiwi from '../../assets/imgs/young-kiwi.png';
-import OldKiwi from '../../assets/imgs/young-kiwi.png';
+import AdultKiwi from '../../assets/imgs/adult-kiwi.png';
+import OldKiwi from '../../assets/imgs/old-kiwi.png';
 import DeadKiwi from '../../assets/imgs/kiwi-dead.png';
 import SpeechBubble from '../../assets/imgs/speech-bubble.svg';
 import axios from 'axios';
@@ -86,11 +86,6 @@ const Main = ({ currentUser }) => {
     setDiff(stat);
   }, []);
 
-  const showBubbleSpeech = () => {
-    setActionClicked(true);
-    setTimeout(() => setActionClicked(false), 4000);
-  };
-
   const handleAction = async (parameter, state, action) => {
     await axios
       .patch(`/api/v1/pet/${parameter}`, { username })
@@ -105,7 +100,8 @@ const Main = ({ currentUser }) => {
       }
       return state + 10;
     });
-    showBubbleSpeech();
+    setActionClicked(true);
+    setTimeout(() => setActionClicked(false), 4000);
   };
 
   const handleFeed = () => handleAction('feed', feed, setFeed);
